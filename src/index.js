@@ -1,17 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import "./main.css"
 
+class TopBar extends React.Component
+{
+    render()
+    {
+        return(
+            <div className="TopBar">
+                <ul>
+                    <li><a href="#about">Vivek Raman</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        );
+    }
+}
+
+class Entry extends React.Component
+{
+    func()
+    {
+        console.log("uwu");
+    }
+
+    render()
+    {
+        return (
+            <div className="BigText">
+            <ul>
+                <li onClick={() => this.func()}>Maker of Games</li>
+                <li>Extended Reality</li>
+            </ul>
+            </div>
+        );
+    }
+}
+ 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <><TopBar /><Entry /></>, document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
