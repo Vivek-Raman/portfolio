@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./main.css"
 
+import IMG_MakerOfGames from "./assets/antimage_arcana_bg.png"
+import IMG_ExtendedReality from "./assets/qop_arcana_bg.png"
+
 class TopBar extends React.Component
 {
     render()
@@ -21,9 +24,20 @@ class TopBar extends React.Component
 
 class Entry extends React.Component
 {
-    func()
+    SetBodyBackground(section)
     {
-        console.log("uwu");
+        document.querySelector("body").style.backgroundImage = `url(${section})`;
+
+    }
+
+    MakerOfGames()
+    {
+        this.SetBodyBackground(IMG_MakerOfGames);
+    }
+
+    ExtendedReality()
+    {
+        this.SetBodyBackground(IMG_ExtendedReality);
     }
 
     render()
@@ -31,8 +45,8 @@ class Entry extends React.Component
         return (
             <div className="BigText">
             <ul>
-                <li onClick={() => this.func()}>Maker of Games</li>
-                <li>Extended Reality</li>
+                <li onClick={() => this.MakerOfGames()}>Maker of Games</li>
+                <li onClick={() => this.ExtendedReality()}>Extended Reality</li>
             </ul>
             </div>
         );

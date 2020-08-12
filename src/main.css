@@ -1,11 +1,13 @@
 body {
     font-family: 'Segoe UI', 'Helvetica Neue', 'Roboto', sans-serif;
-
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .TopBar {
-    /* background-color: red; */
+    background-color: rgb(238, 238, 238);
     padding: 2pt 5pt 2pt 5pt;
+    margin: -8px;
 }
 
 ul {
@@ -14,7 +16,6 @@ ul {
 }
 
 .TopBar ul {
-    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
     flex-flow: row nowrap;
@@ -22,16 +23,13 @@ ul {
     padding: 0%;
 }
 
-/* .TopBar ul li {
-    background-color: chartreuse;
-} */
-
 
 .BigText {
-    /* background-color: violet; */
+    background-color: rgba(250, 235, 235, 0.7);
     font-size: xxx-large;
     position: absolute;
     top: 50%;
+    padding: 0px 20px 0px 20px;
     transform: translate(0%, -50%);
 }
 
