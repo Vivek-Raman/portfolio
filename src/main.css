@@ -1,13 +1,12 @@
 body {
     font-family: 'Segoe UI', 'Helvetica Neue', 'Roboto', sans-serif;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .TopBar {
     background-color: rgb(238, 238, 238);
     padding: 2pt 5pt 2pt 5pt;
-    margin: -8px;
+    margin: -8px -8px 0px -8px;
 }
 
 ul {
@@ -26,13 +25,15 @@ ul {
 
 .BigText {
     background-color: rgba(250, 235, 235, 0.7);
+    color: rgb(80, 80, 80);
     font-size: xxx-large;
+    font-weight: 200;
     position: absolute;
     top: 50%;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 50px 0px 50px;
     transform: translate(0%, -50%);
 }
 
-.BigText li {
-    cursor: pointer;
+.BigText.Active li {
+    color: black;
 }
