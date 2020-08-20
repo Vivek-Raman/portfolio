@@ -3,6 +3,16 @@ body {
     background-repeat: no-repeat;
 }
 
+body.MakerOfGames {
+    transition: 1000ms;
+    background-image: url(assets/antimage_arcana_bg.png);
+}
+
+body.ExtendedReality {
+    transition: 1000ms;
+    background-image: url(assets/qop_arcana_bg.png);
+}
+
 .TopBar {
     background-color: rgb(238, 238, 238);
     padding: 2pt 5pt 2pt 5pt;

@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import InstagramEmbed from 'react-instagram-embed';
 
 import "./main.css"
 
-import IMG_MakerOfGames from "./assets/antimage_arcana_bg.png"
-import IMG_ExtendedReality from "./assets/qop_arcana_bg.png"
-
-const IMG_COUNT = 2;
+const SECTIONS = [
+    "MakerOfGames",
+    "ExtendedReality"
+]
 
 class Main extends React.Component
 {
@@ -17,21 +18,21 @@ class Main extends React.Component
             <Router>
                 <div className="TopBar">
                     <ul>
-                        <li><Link to="/about">Vivek Raman</Link></li>
-                        <li><Link to="/blog">Blog</Link></li>
-                        <li><Link to="/work">Work</Link></li>
-                        <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/portfolio/about">Vivek Raman</Link></li>
+                        <li><Link to="/portfolio/blog">Blog</Link></li>
+                        <li><Link to="/portfolio/work">Work</Link></li>
+                        <li><Link to="/portfolio/contact">Contact</Link></li>
                     </ul>
                 </div>
                 
                 <Switch>
-                    <Route path="/about">
+                    <Route path="/portfolio/about">
                         <LandingPage />
                     </Route>
-                    <Route path="/blog">
+                    <Route path="/portfolio/blog">
                         <Blog />
                     </Route>
-                    <Route path="/">
+                    <Route path="/portfolio/">
                         <LandingPage />
                     </Route>
                 </Switch>
@@ -42,16 +43,34 @@ class Main extends React.Component
 
 class Blog extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        document.querySelector("body").classList = []
+    }
+
     render()
     {
-        return (
-            <div>blog</div>
-        );
+        return (<>
+        <InstagramEmbed
+            url='https://instagr.am/p/Zw9o4/'
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName='div'
+            protocol=''
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
+        </>);
     }
 }
 
 class LandingPage extends React.Component
 {
+
     constructor(props)
     {
         super(props);
@@ -60,43 +79,44 @@ class LandingPage extends React.Component
         };
         
         setInterval(() => {
-            this.CycleModes()
+            this.setState(
+                {cycleCount: (this.state.cycleCount + 1) % SECTIONS.length}
+            );
+            this.CycleModes();
         }, 5000);
 
-        this.SetBodyBackground(this.GetImageURLFromCycleCount());
+        this.SetBodyClass(SECTIONS[this.state.cycleCount]);
     }
 
     CycleModes()
     {
-        this.setState({cycleCount: (this.state.cycleCount + 1) % IMG_COUNT});
-
-        this.SetBodyBackground(this.GetImageURLFromCycleCount());
         
-    }
-    
-    GetImageURLFromCycleCount()
-    {
-        // TODO: add images to cycle here
-        switch (this.state.cycleCount)
-        {
-            case 0: return IMG_MakerOfGames;
-            case 1: return IMG_ExtendedReality;
-        }
+        this.SetBodyClass(SECTIONS[this.state.cycleCount]);
     }
 
-    SetBodyBackground(section)
+    SetActiveBigText(sectionName)
     {
-        console.log(section);
-        document.querySelector("body").style.backgroundImage = `url(${section})`;
+        this.makerOfGamesBigText.classList.remove("Active");
+        this.extendedRealityBigText.remove("Active");
+
+
+    }
+
+    SetBodyClass(sectionName)
+    {
+        document.querySelector("body").classList = [];
+        document.querySelector("body").classList.add(sectionName);
     }
 
     render()
     {
+        this.makerOfGamesBigText = <li className={SECTIONS[0]} onClick={() => this.MakerOfGames()}>Maker of Games</li>
+        this.extendedRealityBigText = <li className={SECTIONS[1]} onClick={() => this.ExtendedReality()}>Extended Reality</li>
         return (
             <div className="BigText">
             <ul>
-                <li onClick={() => this.MakerOfGames()}>Maker of Games</li>
-                <li onClick={() => this.ExtendedReality()}>Extended Reality</li>
+                {this.makerOfGamesBigText}
+                {this.extendedRealityBigText}
             </ul>
             </div>
         );
