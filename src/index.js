@@ -47,23 +47,48 @@ class Blog extends React.Component
     {
         super(props);
         document.querySelector("body").classList = []
+        this.state = {
+            isLoaded: false,
+            data: 'err'
+        }
+        this.getPosts();
+    }
+
+    getPosts()
+    {
+        try
+        {
+            fetch('https://graph.instagram.com/me/media?fields=id,media_url,caption&access_token=IGQVJVRHpqdGZAOZAlZADYzVXRm5LRnFKcmI0X3BGLW9sOXlndTg1OFFVT2tjamFkLUJwcFRHUnh4TjVuYUdpb1hPR2VhN1dPN3oxVVFCNFhrVDczb0M0WU5idGdIMEZAmY0JDTGdoR1FEbzNiVXJSTk15eAZDZD')
+                .then(res => res.json())
+                .then((result) => {
+                    
+                    this.setState({
+                        isLoaded: true,
+                        data: result
+                    });
+                }
+            );
+        }
+        catch(error)
+        {
+            console.error(error);
+        }
+
+        this.setState({
+            posts: ""
+        })
     }
 
     render()
     {
+        if (!this.state.isLoaded)
+        {
+            return (<>wait</>);
+        }
+
         return (<>
-        <InstagramEmbed
-            url='https://instagr.am/p/Zw9o4/'
-            maxWidth={320}
-            hideCaption={false}
-            containerTagName='div'
-            protocol=''
-            injectScript
-            onLoading={() => {}}
-            onSuccess={() => {}}
-            onAfterRender={() => {}}
-            onFailure={() => {}}
-          />
+            <iframe width='480px' height='480px' src={this.state.data.data[0].media_url} />
+            <br />{this.state.data.data[0].caption}
         </>);
     }
 }
