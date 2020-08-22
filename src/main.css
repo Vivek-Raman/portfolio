@@ -5,12 +5,12 @@ body {
 
 body.MakerOfGames {
     transition: 1000ms;
-    background-image: url(assets/antimage_arcana_bg.png);
+    background-image: url(assets/MakerOfGames.png);
 }
 
 body.ExtendedReality {
     transition: 1000ms;
-    background-image: url(assets/qop_arcana_bg.png);
+    background-image: url(assets/ExtendedReality.png);
 }
 
 .TopBar {
@@ -46,4 +46,9 @@ ul {
 
 .BigText.Active li {
     color: black;
+}
+
+.blogContent {
+    display: inline-flex;
+    align-items: center;
 }
