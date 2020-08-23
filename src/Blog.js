@@ -20,7 +20,7 @@ export class Blog extends React.Component {
         try {
             fetch(instagramURL)
                 .then(res => res.json())
-                .then((result) => { // result contains media_type, media_url, thumbnail_url, caption
+                .then((result) => { // result contains permalink, caption
                     let posts = result.data;
                     
                     this.setState({
@@ -48,24 +48,38 @@ export class Blog extends React.Component {
             postContent.push(<Post data = {this.state.posts[i]} />);
         }
 
-        return (
-            <div>{postContent}</div>
-        );
+        return (<>
+            <div className="BlogIntro">
+                <h1>@gamedev.adventures</h1>
+                Welcome! This is my blog. I make posts on my Instagram page, sharing interesting things that I make and experiment with.<br />
+                If my content interests you, please do consider following me on Instagram!
+            </div>
+            {postContent}
+        </>);
     }
 }
 
 class Post extends React.Component // this.props.data contains permalink, caption
 {
+    constructor(props)
+    {
+        super(props);
+        let caption = "" + this.props.data.caption;
+        this.state = {
+            captionContent: caption.split("FOLLOW", 1)[0]
+        };
+    }
+
     render()
     {
-        return (<div className="blogContent">
+        return (
+        <div className="postContent">
             <InstagramEmbed 
-             url = {this.props.data.permalink} 
-             maxWidth={500} 
-             hideCaption={true} 
-             containerTagName='div' 
+                url = {this.props.data.permalink}
+                maxWidth = {450}
+                hideCaption={true}
             />
-            {this.props.data.caption}
-        </div>)
+            <div>{this.state.captionContent}</div>
+        </div>);
     }
 }

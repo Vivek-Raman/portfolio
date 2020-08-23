@@ -1,16 +1,23 @@
 import React from 'react';
-import { SECTIONS } from './index';
+
+const SECTIONS = [
+    "MakerOfGames",
+    "ExtendedReality"
+]
 
 export class LandingPage extends React.Component {
     constructor(props) {
         super(props);
+        
         let cycle = setInterval(() => this.CycleModes(), 5000);
+        
         this.state = {
             cycleCount: 0,
             cycle: cycle
         };
 
         this.SetBodyClass(SECTIONS[this.state.cycleCount]);
+        
     }
 
     CycleModes() {
@@ -18,13 +25,21 @@ export class LandingPage extends React.Component {
             { cycleCount: (this.state.cycleCount + 1) % SECTIONS.length }
         );
         this.SetBodyClass(SECTIONS[this.state.cycleCount]);
+        this.SetActiveBigText(SECTIONS[this.state.cycleCount]);
     }
 
     SetActiveBigText(sectionName) {
-        this.makerOfGamesBigText.classList.remove("Active");
-        this.extendedRealityBigText.remove("Active");
+        document.getElementById(SECTIONS[0]).classList.remove("Active");
+        document.getElementById(SECTIONS[1]).classList.remove("Active");
 
-
+        if (sectionName === "MakerOfGames")
+        {
+            document.getElementById(SECTIONS[0]).classList.add("Active");
+        }
+        else
+        {
+            document.getElementById(SECTIONS[1]).classList.add("Active");
+        }
     }
 
     SetBodyClass(sectionName) {
@@ -33,13 +48,12 @@ export class LandingPage extends React.Component {
     }
 
     render() {
-        this.makerOfGamesBigText = <li className={SECTIONS[0]} onClick={() => this.MakerOfGames()}>Maker of Games</li>;
-        this.extendedRealityBigText = <li className={SECTIONS[1]} onClick={() => this.ExtendedReality()}>Extended Reality</li>;
+        
         return (
             <div className="BigText">
                 <ul>
-                    {this.makerOfGamesBigText}
-                    {this.extendedRealityBigText}
+                    <li id={SECTIONS[0]} onClick={() => this.MakerOfGames()}>Maker of Games</li>
+                    <li id={SECTIONS[1]} onClick={() => this.ExtendedReality()}>Extended Reality</li>
                 </ul>
             </div>
         );

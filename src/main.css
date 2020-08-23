@@ -1,27 +1,25 @@
 body {
-    font-family: 'Segoe UI', 'Helvetica Neue', 'Roboto', sans-serif;
     background-repeat: no-repeat;
+    font-family: 'Segoe UI', 'Helvetica Neue', 'Roboto', sans-serif;
 }
 
+/* Landing Page */
+
 body.MakerOfGames {
-    transition: 1000ms;
     background-image: url(assets/MakerOfGames.png);
+    transition: 1000ms;
 }
 
 body.ExtendedReality {
-    transition: 1000ms;
     background-image: url(assets/ExtendedReality.png);
+    transition: 1000ms;
 }
 
 .TopBar {
     background-color: rgb(238, 238, 238);
-    padding: 2pt 5pt 2pt 5pt;
     margin: -8px -8px 0px -8px;
-}
-
-ul {
-    list-style: none;
-    padding: 0%;
+    padding: 2pt 5pt 2pt 5pt;
+    width: 100%;
 }
 
 .TopBar ul {
@@ -34,21 +32,58 @@ ul {
 
 
 .BigText {
-    background-color: rgba(250, 235, 235, 0.7);
+    background-color: rgba(228, 228, 228, 0.9);
     color: rgb(80, 80, 80);
     font-size: xxx-large;
     font-weight: 200;
+    padding: 0px 50px 0px 50px;
     position: absolute;
     top: 50%;
-    padding: 0px 50px 0px 50px;
     transform: translate(0%, -50%);
+    transition: 500ms;
 }
 
-.BigText.Active li {
+.BigText li.Active {
     color: black;
+    /* font-weight: bolder; */
+    transition: 500ms;
 }
 
-.blogContent {
-    display: inline-flex;
+ul {
+    list-style: none;
+    padding: 0%;
+}
+
+/* Blog */
+
+.postContent {
     align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 25px 0px;
+}
+
+/* Mobile */
+@media only screen and (max-width: 1000px) {
+    .postContent {
+        flex-direction: column;
+        text-align: center;
+        justify-items: center;
+        width: 100%;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1001px) {
+    .postContent div {
+        width: 500px;
+    }
+}
+.BlogIntro h1 {
+    font-size: xxx-large;
+    font-weight: 200;
+}
+
+.BlogIntro {
+    text-align: center;
 }
