@@ -79,11 +79,28 @@ ul {
         width: 500px;
     }
 }
-.BlogIntro h1 {
-    font-size: xxx-large;
+.BlogText h1 {
+    font-size: xx-large;
     font-weight: 200;
 }
 
-.BlogIntro {
+.BlogText h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.BlogText {
     text-align: center;
+}
+.LoadMore {
+    cursor: pointer;
+    text-align: center;
+    text-decoration: underline;
+}
+
+hr {
+    margin: 40px 50%;
+    transform: translate(-50%, 0%);
+    width: 20%;
+    color: rgb(189, 189, 189);
 }

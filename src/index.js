@@ -5,6 +5,7 @@ import { Route, BrowserRouter as Router, Switch, Link, Redirect } from 'react-ro
 import "./main.css"
 import { LandingPage } from './LandingPage';
 import { Blog } from './Blog';
+import { Contact } from './Contact';
 
 class Main extends React.Component
 {
@@ -28,6 +29,9 @@ class Main extends React.Component
                     </Route>
                     <Route path="/portfolio/blog">
                         <Blog />
+                    </Route>
+                    <Route path="/portfolio/contact">
+                        <Contact />
                     </Route>
 
 
