@@ -60,6 +60,7 @@ export class LandingPage extends React.Component {
     }
 
     componentWillUnmount() {
+        this.clearBodyBackground();
         clearInterval(this.state.cycle);
     }
 }

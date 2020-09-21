@@ -9,7 +9,6 @@ export class Blog extends React.Component {
     constructor(props)
     {
         super(props);
-        document.querySelector("body").classList = [];
         this.state = {
             isLoaded: false,
             displayedPostCount: 5
@@ -67,6 +66,7 @@ export class Blog extends React.Component {
                 If my content interests you, please do consider following me on Instagram!
             </div>
             {postContent}
+            <hr />
             {loader}
         </>);
     }
