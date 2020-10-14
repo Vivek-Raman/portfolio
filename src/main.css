@@ -12,6 +12,7 @@ body.MakerOfGames {
 
 body.ExtendedReality {
     background-image: url(assets/ExtendedReality.png);
+    height: 200%;
     transition: 1000ms;
 }
 

@@ -53,14 +53,14 @@ export class LandingPage extends React.Component {
             <div className="BigText">
                 <ul>
                     <li id={SECTIONS[0]} onClick={() => this.MakerOfGames()}>Maker of Games</li>
-                    <li id={SECTIONS[1]} onClick={() => this.ExtendedReality()}>Extended Reality</li>
+                    <li id={SECTIONS[1]} onClick={() => this.ExtendedReality()}>Extendong of Reality</li>
                 </ul>
             </div>
         );
     }
 
     componentWillUnmount() {
-        this.clearBodyBackground();
+        // this.clearBodyBackground();
         clearInterval(this.state.cycle);
     }
 }

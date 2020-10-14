@@ -4,7 +4,7 @@ export class Contact extends React.Component
 {
     render() {
         return (<>
-            <div>You can reach me through my socials</div>
+            <div>Check my blog!</div>
         </>);
     }
 }
